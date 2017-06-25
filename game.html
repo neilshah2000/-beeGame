@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bee Game</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js'></script>
+    <link rel="stylesheet" type="text/css" href="game.css" />
+    <script src="game.js"></script>
+</head>
+
+<body>
+    <button id='btnSwat'>Swat Bee!</button>
+    <button id='btnReset'>Reset</button>
+    
+    <div id="game" class="show" data-bind="css: {show: game().dead()}">
+    Game Over!
+    </div>
+
+    <div>
+    <div class='bee' data-bind="css: {deadBee: game().dead()}">
+        <h1>Queen</h1>
+        <h3>Life Points: <span data-bind="text: game().life"></span></h3>
+        <!-- <h3>Dead Bee: <span data-bind="text: game().dead"></span></h3> -->
+    </div>
+
+    <!-- ko foreach: game().workers -->
+    <div class='bee' data-bind="css: {deadBee: dead()}">
+        <h1>Worker</h1>
+        <h3>Life Points: <span data-bind="text: life"></span></h3>
+        <!-- <h3>Dead Bee: <span data-bind="text: dead"></span></h3> -->
+    </div>
+	<!-- /ko -->
+
+    <!-- ko foreach: game().drones -->
+    <div class='bee' data-bind="css: {deadBee: dead()}">
+        <h1>Drone</h1>
+        <h3>Life Points: <span data-bind="text: life"></span></h3>
+        <!-- <h3>Dead Bee: <span data-bind="text: dead"></span></h3> -->
+    </div>
+    <!-- /ko -->
+    </div>
+
+
+    <!-- <pre data-bind="text: ko.toJSON($data,null,2)"></pre> -->
+</body>
+
+</html>
